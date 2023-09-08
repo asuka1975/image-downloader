@@ -35,6 +35,7 @@ function startDownload(
 async function downloadImages(/** @type {Task} */ task) {
   tasks.add(task);
   for (const image of task.imagesToDownload) {
+    await sleep(Math.floor(Math.random() * 300 + 200));
     await new Promise((resolve) => {
       chrome.downloads.download({ url: image }, (downloadId) => {
         if (downloadId == null) {
